@@ -1,35 +1,28 @@
 # keras-mnist-tutorial
 
 ## Project Overview
-A beginner-friendly tutorial for building a deep learning model to classify handwritten digits using the Keras library.
+This project is a simple quick-start tutorial on performing digit recognition using a neural network built with Keras. Originally created for a tutorial at the University of Toronto, it demonstrates how to build, train, and evaluate a Multilayer Perceptron (MLP) on the popular MNIST dataset. The tutorial guides the user through installing prerequisites, loading and formatting data, building a 3-layer neural network, compiling it, training it, and evaluating its performance on predicting handwritten digits.
 
-## What is this Project?
-This project demonstrates the classic "Hello World" of deep learning: classifying the MNIST dataset. The MNIST dataset contains 70,000 grayscale images of handwritten digits (0 through 9).
+## Deep Technical Details (Architecture, Pipeline)
 
-## How it was done
-The project uses a Jupyter Notebook (`MNIST in Keras.ipynb`) to walk through the steps of loading the dataset, building a Sequential neural network model in Keras, compiling it, and training it on the images.
+### Architecture
+The model uses a 3-layer fully connected Neural Network (Multilayer Perceptron):
+- **Input Layer:** Takes a 784-dimensional vector (flattened 28x28 image).
+- **Hidden Layer 1:** Dense layer with 512 units and `ReLU` activation, followed by a `Dropout` layer (rate of 0.2) to prevent overfitting.
+- **Hidden Layer 2:** Dense layer with 512 units and `ReLU` activation, followed by a `Dropout` layer (rate of 0.2).
+- **Output Layer:** Dense layer with 10 units (for the 10 digit classes) and `Softmax` activation to output a valid probability distribution.
+- **Loss Function:** Categorical Crossentropy.
+- **Optimizer:** Adam.
 
-## Why it was done
-To provide an introductory guide and hands-on example for learning the basics of deep learning, artificial neural networks, and the Keras framework.
+### Data Pipeline
+1. **Loading Data:** Fetches the MNIST dataset consisting of 60,000 training and 10,000 testing images.
+2. **Reshaping:** Converts each 28x28 image into a single 784-dimensional vector.
+3. **Normalization:** Scales input pixel values from the `[0, 255]` range to `[0, 1]` by converting data types to `float32` and dividing by 255.
+4. **Target Encoding:** Applies one-hot encoding to the target labels (e.g., class `0` becomes `[1, 0, 0, ... 0]`) to prepare them for categorical crossentropy loss calculation.
 
 ## Tech Stack
-- Python
-- Keras (Deep Learning Framework)
-- Jupyter Notebook
-- Matplotlib (for visualization)
-
-## Key Features
-- Simple and educational architecture for classifying MNIST digits.
-- Visualizations of the dataset and the training process.
-- Step-by-step documentation within the Jupyter Notebook.
-
-## File Structure
-- `MNIST in Keras.ipynb`: The main instructional notebook containing the code and explanations.
-- `figure.png`, `newnotebook.png`: Images likely used for documentation or results visualization.
-- `README.md`: This file.
-
-## Local Setup (if applicable)
-1. Clone the repository.
-2. Install required dependencies: `pip install keras tensorflow matplotlib numpy jupyter`.
-3. Start Jupyter: `jupyter notebook`.
-4. Open and run `MNIST in Keras.ipynb`.
+- **Python** (Tested on Python 3)
+- **Keras** (Deep Learning library)
+- **NumPy** (Numerical operations and matrix transformations)
+- **Matplotlib** (Data visualization)
+- **Jupyter Notebook** (Interactive environment)
